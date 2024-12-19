@@ -18,29 +18,26 @@
 </head>
 <body>
     <script>
-        // Set up scene, camera, and renderer
+        // Scene, Camera, and Renderer setup
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Create a cube
+        // Cube creation
         const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({
-            color: 0x0077ff,
-            wireframe: true,
-        });
+        const material = new THREE.MeshBasicMaterial({ color: 0x0077ff, wireframe: true });
         const cube = new THREE.Mesh(geometry, material);
         scene.add(cube);
 
-        // Set up camera position
+        // Camera positioning
         camera.position.z = 5;
 
-        // Add OrbitControls for interaction
+        // OrbitControls for interaction
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-        // Handle window resizing
+        // Handle browser resize
         window.addEventListener('resize', () => {
             renderer.setSize(window.innerWidth, window.innerHeight);
             camera.aspect = window.innerWidth / window.innerHeight;
